@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/vlamug/accesslog-exporter.svg?branch=master)](https://travis-ci.org/vlamug/accesslog-exporter)
+[![Go Report Card](https://goreportcard.com/badge/github.com/vlamug/accesslog-exporter)](https://goreportcard.com/report/github.com/vlamug/accesslog-exporter)
+
 # Accesslog Exporter
 
 The exporter accepts accesslog via syslog stream and exposes metrics readable for Prometheus.
