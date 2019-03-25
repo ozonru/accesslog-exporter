@@ -1,10 +1,11 @@
 VERSION                 := 0.0.1
 TARGET					:= accesslog-exporter
+TARGET_PATH             := cmd/accesslog-exporter/main.go
 
 REVISION                := $(shell git rev-parse --short HEAD 2> /dev/null || echo 'unknown')
 BRANCH                  := $(shell git rev-parse --abbrev-ref HEAD 2> /dev/null || echo 'unknown')
 
-REPO_PATH               := "github.com/vlamug/accesslog-exporter"
+REPO_PATH               := github.com/vlamug/accesslog-exporter
 LDFLAGS                 += -X $(REPO_PATH)/exposer.Version=$(VERSION)
 LDFLAGS                 += -X $(REPO_PATH)/exposer.Revision=$(REVISION)
 LDFLAGS                 += -X $(REPO_PATH)/exposer.Branch=$(BRANCH)
@@ -35,8 +36,7 @@ lint: golang_ci_lint_bin
 
 build:
 	@echo ">> building binary..."
-	@echo ">> GOOS=$(GOOS) GOARCH=$(GOARCH) $(GO) build $(GOFLAGS) -o $(TARGET)"
-	GOOS=$(GOOS) GOARCH=$(GOARCH) $(GO) build $(GOFLAGS) -o $(TARGET)
+	GOOS=$(GOOS) GOARCH=$(GOARCH) $(GO) build $(GOFLAGS) -o $(TARGET) $(TARGET_PATH)
 
 bench:
 	@echo ">> run benchmarks"
