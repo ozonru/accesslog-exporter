@@ -1,4 +1,4 @@
-VERSION                 := 0.0.1
+VERSION                 := v0.0.1
 TARGET					:= accesslog-exporter
 TARGET_PATH             := cmd/accesslog-exporter/main.go
 
