@@ -14,6 +14,7 @@ env:
     - TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
 script:
   - make test
+  - make build
   - docker build -t vlamug/accesslog-exporter:${TAG} .
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
