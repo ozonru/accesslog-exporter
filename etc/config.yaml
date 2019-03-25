@@ -1,0 +1,73 @@
+global:
+  # (optional) If log string contains $remote_addr that
+  # belongs to following subnets - User Agent won't be parsed
+  # Instead of that OS and Device will be marked as "internal"
+  internal_subnets:
+    - 30.0.0.0/8
+    - 188.173.191.0/24
+    - 188.173.192.0/24
+    - 188.173.193.0/24
+
+  # (optional) User agents cache max size (items). Default - 100k
+  # user_agent_cache_size: 200000
+
+  # (optional) Number of workers(goroutines) to parse and export log line metrics. Default - 100
+  export_workers: 1000
+
+  # (optional) Use this for custom User Agent replacements
+  user_agents:
+    - match_re: ^MyStore\/([0-9]+)
+      replacements:
+        os: IOS
+        user_agent: myapp_ios_$1
+    - match_re: ^myapp_android\/([0-9\.]+)
+      replacements:
+        os: Android
+        user_agent: myapp_android_$1 # $1 will be replaced by version
+    - match: stress_test
+      replacements:
+        os: internal
+        user_agent: stress_testing
+        device: internal
+
+  # (optional) If defined - additional metric will be collected for particular path
+  request_uris:
+    - match_re: ^/(\?.*)?$
+      match_method: "GET" # (optional)
+      replacements:
+        request_uri: home
+    - match_re: ^/search/.*
+      match_method: "GET" # (optional)
+      replacements:
+        request_uri: search
+    - match_re: ^/detail/page/id/.*
+      match_method: "GET"
+      replacements:
+        request_uri: product_page
+    - match_re: (\.js|\.css|\.gif|\.jpg|\.jpeg|\.png|\.xml|\.ico)
+      match_method: "GET"
+      replacements:
+        request_uri: is_static
+
+  # (optional) Contains list of equivalent hosts, that should considered as the same, for example: www.site.com, site.com
+  hosts:
+    - match: 'site.ru'
+      replacement: 'www.site.ru'
+
+# (required) List of your Nginx hosts to collect logs from
+sources:
+  - host: localhost
+    # Nginx log format.
+    # See https://nginx.org/ru/docs/http/ngx_http_log_module.html
+    # Following multiline string will be simple one-line string
+    # See YAML syntax here:
+    # https://symfony.com/doc/current/components/yaml/yaml_format.html
+    log_format: >
+      [$time_local] | $remote_addr | $remote_user | $status | $scheme | $host | "$request" | $body | $body_bytes_sent| $fullrequest | $http_user_agent | $http_referer | $request_time | $connection_requests
+
+  - host: accesslog.pandor.gun.machine
+    log_format: >
+      [$time_local] | $remote_addr | $remote_user | $unknown_field | $unknown_ip | $status | $scheme | $host | "$request" | $body | $body_bytes_sent| $fullrequest | $http_user_agent | $http_referer | $request_time | $status_again | $unknon_field1 | [$some_time] | $main | $default | $connection_requests | $host1 | $file1
+
+  - host: loadbalancer
+    log_format: $remote_addr | $status | $http_user_agent | $request_time | $request | $host
