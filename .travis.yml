@@ -1,0 +1,20 @@
+language: go
+services:
+  - docker
+go:
+  - 1.11.x
+cache:
+  directories:
+    - $HOME/.gocache
+env:
+  matrix:
+    - GO111MODULE=on
+  global:
+    - GOCACHE=$HOME/.gocache
+    - TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+script:
+  - make test
+  - docker build -t vlamug/accesslog-exporter:${TAG} .
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push vlamug/accesslog-exporter:${TAG}
