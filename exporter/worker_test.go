@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"testing"
 
-	"github.com/vlamug/accesslog-exporter/config"
+	"github.com/ozonru/accesslog-exporter/config"
 
 	. "gopkg.in/check.v1"
 )

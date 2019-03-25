@@ -1,4 +1,4 @@
-module github.com/vlamug/accesslog-exporter
+module github.com/ozonru/accesslog-exporter
 
 require (
 	github.com/hashicorp/golang-lru v0.5.1

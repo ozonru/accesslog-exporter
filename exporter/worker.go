@@ -5,13 +5,13 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/vlamug/accesslog-exporter/cache"
-	"github.com/vlamug/accesslog-exporter/config"
-	"github.com/vlamug/accesslog-exporter/exposer"
-	"github.com/vlamug/accesslog-exporter/input"
-	"github.com/vlamug/accesslog-exporter/parser"
-	"github.com/vlamug/accesslog-exporter/pkg/logging"
-	"github.com/vlamug/accesslog-exporter/pkg/net"
+	"github.com/ozonru/accesslog-exporter/cache"
+	"github.com/ozonru/accesslog-exporter/config"
+	"github.com/ozonru/accesslog-exporter/exposer"
+	"github.com/ozonru/accesslog-exporter/input"
+	"github.com/ozonru/accesslog-exporter/parser"
+	"github.com/ozonru/accesslog-exporter/pkg/logging"
+	"github.com/ozonru/accesslog-exporter/pkg/net"
 )
 
 const (

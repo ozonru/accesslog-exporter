@@ -15,7 +15,7 @@ env:
 script:
   - make test
   - make build
-  - docker build -t vlamug/accesslog-exporter:${TAG} .
+  - docker build -t ozonru/accesslog-exporter:${TAG} .
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push vlamug/accesslog-exporter:${TAG}
+  - docker push ozonru/accesslog-exporter:${TAG}

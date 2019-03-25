@@ -3,7 +3,7 @@ package input
 import (
 	"context"
 
-	"github.com/vlamug/accesslog-exporter/pkg/logging"
+	"github.com/ozonru/accesslog-exporter/pkg/logging"
 
 	"gopkg.in/mcuadros/go-syslog.v2"
 )

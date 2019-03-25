@@ -8,13 +8,13 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/vlamug/accesslog-exporter/cache"
-	"github.com/vlamug/accesslog-exporter/config"
-	"github.com/vlamug/accesslog-exporter/exporter"
-	"github.com/vlamug/accesslog-exporter/exposer"
-	"github.com/vlamug/accesslog-exporter/input"
-	"github.com/vlamug/accesslog-exporter/parser"
-	"github.com/vlamug/accesslog-exporter/pkg/logging"
+	"github.com/ozonru/accesslog-exporter/cache"
+	"github.com/ozonru/accesslog-exporter/config"
+	"github.com/ozonru/accesslog-exporter/exporter"
+	"github.com/ozonru/accesslog-exporter/exposer"
+	"github.com/ozonru/accesslog-exporter/input"
+	"github.com/ozonru/accesslog-exporter/parser"
+	"github.com/ozonru/accesslog-exporter/pkg/logging"
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )

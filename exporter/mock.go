@@ -3,7 +3,7 @@ package exporter
 import (
 	"context"
 
-	"github.com/vlamug/accesslog-exporter/input"
+	"github.com/ozonru/accesslog-exporter/input"
 
 	"github.com/ua-parser/uap-go/uaparser"
 )

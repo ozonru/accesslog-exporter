@@ -5,7 +5,7 @@ TARGET_PATH             := cmd/accesslog-exporter/main.go
 REVISION                := $(shell git rev-parse --short HEAD 2> /dev/null || echo 'unknown')
 BRANCH                  := $(shell git rev-parse --abbrev-ref HEAD 2> /dev/null || echo 'unknown')
 
-REPO_PATH               := github.com/vlamug/accesslog-exporter
+REPO_PATH               := github.com/ozonru/accesslog-exporter
 LDFLAGS                 += -X $(REPO_PATH)/exposer.Version=$(VERSION)
 LDFLAGS                 += -X $(REPO_PATH)/exposer.Revision=$(REVISION)
 LDFLAGS                 += -X $(REPO_PATH)/exposer.Branch=$(BRANCH)

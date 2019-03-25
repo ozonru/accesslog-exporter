@@ -4,7 +4,7 @@ import (
 	"log"
 	"testing"
 
-	"github.com/vlamug/accesslog-exporter/parser"
+	"github.com/ozonru/accesslog-exporter/parser"
 
 	"github.com/ua-parser/uap-go/uaparser"
 )
