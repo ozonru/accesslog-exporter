@@ -40,7 +40,7 @@ build:
 
 bench:
 	@echo ">> run benchmarks"
-	$(GO) test -run=Parse -bench=. ./benchmark
+	$(GO) test -v -test.bench BenchmarkParse -test.run=noneedruningtests ./...
 
 golang_ci_lint_bin:
 	@echo ">> checking that golangci-lint exists"
