@@ -1,10 +1,8 @@
-package benchmark
+package parser
 
 import (
 	"log"
 	"testing"
-
-	"github.com/ozonru/accesslog-exporter/parser"
 
 	"github.com/ua-parser/uap-go/uaparser"
 )
@@ -19,27 +17,27 @@ var (
 	userAgentParser = uaparser.NewFromSaved()
 )
 
-// BenchmarkUaParserParse checks the parsing of user agent using ua-parser package
-func BenchmarkUaParserParse(b *testing.B) {
+// BenchmarkParseUaParser checks the parsing of user agent using ua-parser package
+func BenchmarkParseUaParser(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		userAgentParser.Parse(userAgent)
 	}
 }
 
-// BenchmarkSpaceParser parses log line using space parser
-func BenchmarkSpaceParser(b *testing.B) {
+// BenchmarkParseSpaceParser parses log line using space parser
+func BenchmarkParseSpaceParser(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		_, err := parser.ParseSpacedFormat(spacedLogFormat, spacedLogContent)
+		_, err := ParseSpacedFormat(spacedLogFormat, spacedLogContent)
 		if err != nil {
 			log.Fatalf("could not run benchmark: %s", err)
 		}
 	}
 }
 
-// BenchmarkPipeParser parser log line using pipe parser
-func BenchmarkPipeParser(b *testing.B) {
+// BenchmarkParsePipeParser parser log line using pipe parser
+func BenchmarkParsePipeParser(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		_, err := parser.ParsePipedFormat(pipedLogFormat, pipedLogContent)
+		_, err := ParsePipedFormat(pipedLogFormat, pipedLogContent)
 		if err != nil {
 			log.Fatalf("could not run benchmark: %s", err)
 		}
